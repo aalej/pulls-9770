@@ -6,6 +6,7 @@ import { useRef } from "react";
 
 function App() {
   const defaultDbDocIdInput = useRef<HTMLInputElement | null>(null);
+  const nonDefaultDbDocIdInput = useRef<HTMLInputElement | null>(null);
 
   async function addDocToDefaultDatabase() {
     const collectionRef = collection(defaultFirestoreDb, "test-collection");
@@ -69,10 +70,10 @@ function App() {
       <button onClick={addDocToNonDefaultDatabase}>
         Add Doc to Default Database
       </button>
-      <input type="text" ref={defaultDbDocIdInput}></input>
+      <input type="text" ref={nonDefaultDbDocIdInput}></input>
       <button
         onClick={() =>
-          getDocFromNonDefaultDatabase(defaultDbDocIdInput.current?.value)
+          getDocFromNonDefaultDatabase(nonDefaultDbDocIdInput.current?.value)
         }
       >
         Get Doc from Non Default Database
